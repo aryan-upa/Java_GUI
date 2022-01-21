@@ -50,7 +50,7 @@ class CalculatorAppFrame extends Frame {
         add(sub);
         add(fact);
         add(reset);
-        add(answer);
+//        add(answer);
 
         add(label);
     }
@@ -58,32 +58,60 @@ class CalculatorAppFrame extends Frame {
     class HandlerEvents implements TextListener, ActionListener {
         @Override
         public void textValueChanged(TextEvent e) {
-            label.setText(textField.getText());
+
         }
 
+        ActionEvent event;
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(e.getSource() == add) {
-                if(textField.getText().isEmpty()) {
-                    label.setText("NoneEntered");
-                }
-                else {
-                    if (temp == 0) {
-                        temp = Integer.parseInt(textField.getText());
-                        label.setText(label.getText() + '+');
-                        textField.setText("");
-                    }
-                    else {
-                            sumC = temp + Integer.parseInt(textField.getText());
-                            answerC = sumC;
-                            label.setText( label.getText() + textField.getText());
-                            textField.setText(String.valueOf(answerC));
-                            temp = answerC;
-                        }
-                    }
+            if (temp == 0 && e.getSource() != reset) {
+                label.setText("");
+                temp = Integer.parseInt(textField.getText());
+                textField.setText("");
+            }
+            else if(e.getSource() == add) {
+                sumC = temp + Integer.parseInt(textField.getText());
+                answerC = sumC;
+                label.setText("" + temp + '+' + textField.getText() + " = " + answerC);
+                temp = 0;
+                answerC = 0;
             }
 
-
+            else if(e.getSource() == sub) {
+                subC = temp - Integer.parseInt(textField.getText());
+                answerC = subC;
+                label.setText("" + temp + '-' + textField.getText() + " = " + answerC);
+                temp = 0;
+                answerC = 0;
+            }
+            else if(e.getSource() == mul) {
+                mulC = temp * Integer.parseInt(textField.getText());
+                answerC = mulC;
+                label.setText("" + temp + '*' + textField.getText() + " = " + answerC);
+                temp = 0;
+                answerC = 0;
+            }
+            else if(e.getSource() == div) {
+                divC = temp / Integer.parseInt(textField.getText());
+                answerC = divC;
+                label.setText("" + temp + '/' + textField.getText() + " = " + answerC);
+                temp = 0;
+                answerC = 0;
+            }
+            if(e.getSource() == fact) {
+                int tempres = 1;
+                for (int i=1; i<temp+1; i++)
+                    tempres *= i;
+                answerC = tempres;
+                label.setText("" + temp + "! = " + answerC);
+                temp = 0;
+                answerC = 0;
+            }
+            if(e.getSource() == reset) {
+                temp = 0;
+                label.setText("");
+            }
+            textField.setText("");
         }
     }
 }
