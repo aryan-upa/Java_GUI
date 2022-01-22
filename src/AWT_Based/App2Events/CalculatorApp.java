@@ -50,7 +50,7 @@ class CalculatorAppFrame extends Frame {
         add(sub);
         add(fact);
         add(reset);
-//        add(answer);
+        add(answer);
 
         add(label);
     }
@@ -64,6 +64,8 @@ class CalculatorAppFrame extends Frame {
         ActionEvent event;
         @Override
         public void actionPerformed(ActionEvent e) {
+            if(e.getSource() != answer)
+                event = e;
             if (temp == 0 && e.getSource() != reset) {
                 label.setText("");
                 temp = Integer.parseInt(textField.getText());
@@ -72,44 +74,46 @@ class CalculatorAppFrame extends Frame {
             else if(e.getSource() == add) {
                 sumC = temp + Integer.parseInt(textField.getText());
                 answerC = sumC;
-                label.setText("" + temp + '+' + textField.getText() + " = " + answerC);
-                temp = 0;
-                answerC = 0;
             }
 
             else if(e.getSource() == sub) {
                 subC = temp - Integer.parseInt(textField.getText());
                 answerC = subC;
-                label.setText("" + temp + '-' + textField.getText() + " = " + answerC);
-                temp = 0;
-                answerC = 0;
             }
             else if(e.getSource() == mul) {
                 mulC = temp * Integer.parseInt(textField.getText());
                 answerC = mulC;
-                label.setText("" + temp + '*' + textField.getText() + " = " + answerC);
-                temp = 0;
-                answerC = 0;
             }
             else if(e.getSource() == div) {
                 divC = temp / Integer.parseInt(textField.getText());
                 answerC = divC;
-                label.setText("" + temp + '/' + textField.getText() + " = " + answerC);
-                temp = 0;
-                answerC = 0;
             }
             if(e.getSource() == fact) {
                 int tempres = 1;
                 for (int i=1; i<temp+1; i++)
                     tempres *= i;
                 answerC = tempres;
-                label.setText("" + temp + "! = " + answerC);
-                temp = 0;
-                answerC = 0;
             }
             if(e.getSource() == reset) {
                 temp = 0;
                 label.setText("");
+            }
+            if(e.getSource() == answer) {
+                if(event.getSource() == add)
+                    label.setText("" + temp + '+' + textField.getText() + " = " + answerC);
+                else if (event.getSource() == sub )
+                    label.setText("" + temp + '-' + textField.getText() + " = " + answerC);
+                else if (event.getSource() == mul)
+                    label.setText("" + temp + '*' + textField.getText() + " = " + answerC);
+                else if(event.getSource() == div)
+                    label.setText("" + temp + '/' + textField.getText() + " = " + answerC);
+                else if(event.getSource() == fact)
+                    label.setText("" + temp + "! = " + answerC);
+                else
+                    label.setText("None");
+
+                temp = 0;
+                answerC = 0;
             }
             textField.setText("");
         }
