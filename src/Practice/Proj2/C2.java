@@ -3,7 +3,7 @@ package Practice.Proj2;
 import java.awt.*;
 import java.awt.event.*;
 
-class MyFrame extends Frame implements ActionListener {
+class MyFrame extends Frame {
 
     TextArea Expression;
     TextField result;
@@ -73,15 +73,11 @@ class MyFrame extends Frame implements ActionListener {
             }
         });
 
+        ActionListener listener = new MyActions();
 
         for (Button button: buttons.allButtons) {
-            button.addActionListener(this);
+            button.addActionListener(listener);
         }
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
 
     }
 }
