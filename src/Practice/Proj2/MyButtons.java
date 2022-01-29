@@ -20,6 +20,16 @@ public class MyButtons extends Button {
 
         allButtons = new Button[]{fact, sum, isA, sub, isP, mul, rand, div};
 
+        fact.setActionCommand("1");
+        sum.setActionCommand("2");
+        isA.setActionCommand("3");
+        sub.setActionCommand("4");
+        isP.setActionCommand("5");
+        mul.setActionCommand("6");
+        rand.setActionCommand("7");
+        div.setActionCommand("8");
+        solve.setActionCommand("9");
+
     }
 
     MyButtons() {

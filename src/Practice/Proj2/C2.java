@@ -5,12 +5,12 @@ import java.awt.event.*;
 
 class MyFrame extends Frame {
 
-    TextArea Expression;
-    TextField result;
+    static TextArea Expression;
+    static TextField result;
     Label name;
 
-    String DEF_RES = "Result : ";
-    final String NAME = "Aryan Upadhyay";
+    static String DEF_RES = "Result : ";
+    final static String NAME = "Aryan Upadhyay";
 
     Color c1 = new Color(220,211,101);
     Color c2 = new Color(200,157,232);
@@ -23,7 +23,7 @@ class MyFrame extends Frame {
     public MyFrame() {
         super("Calculator App 2!");
 
-        Expression = new TextArea("Expression",7, 0,TextArea.SCROLLBARS_NONE);
+        Expression = new TextArea("Expression",5, 5,TextArea.SCROLLBARS_NONE);
         Expression.setBackground(c1);
         Expression.setFont(resFont);
 
