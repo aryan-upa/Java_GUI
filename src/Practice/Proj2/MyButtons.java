@@ -10,15 +10,16 @@ public class MyButtons extends Button {
     {
         fact = new Button("Factorial");
         isP = new Button("isPrime");
-        isA = new Button("isArmstrgetong");
+        isA = new Button("isArmstrong");
         rand = new Button("Random");
         sum = new Button("Addition");
         sub = new Button("Subtract");
         mul = new Button("Multiply");
         div = new Button("Divide");
-        solve = new Button("Solve = ");
+        solve = new Button("Solve");
 
         allButtons = new Button[]{fact, sum, isA, sub, isP, mul, rand, div};
+
     }
 
     MyButtons() {
