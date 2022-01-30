@@ -50,15 +50,7 @@ public class C2Math {
         return x + y;
     }
 
-    public static float add(float x, float y) {
-        return x + y;
-    }
-
     public static int sub(int x, int y) {
-        return x - y;
-    }
-
-    public static float sub(float x, float y) {
         return x - y;
     }
 
@@ -66,15 +58,8 @@ public class C2Math {
         return x * y;
     }
 
-    public static float mul(float x, float y) {
-        return x * y;
-    }
-
     public static float div(int x, int y) {
         return (float) x / y;
     }
 
-    public static float div(float x, float y) {
-        return x / y;
-    }
 }
