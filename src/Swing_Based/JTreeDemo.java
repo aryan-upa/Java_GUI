@@ -7,7 +7,6 @@ import javax.swing.event.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
 import java.io.File;
-import java.util.Objects;
 
 class JTreeDemoFrame extends JFrame implements TreeSelectionListener {
 
@@ -17,7 +16,7 @@ class JTreeDemoFrame extends JFrame implements TreeSelectionListener {
     public DefaultMutableTreeNode returnTree(File f) {
         if(f.isDirectory()) {
             DefaultMutableTreeNode tempNode = new DefaultMutableTreeNode(f.getName());
-            for (File y: Objects.requireNonNull(f.listFiles())) {
+            for (File y: f.listFiles()) {
                 tempNode.add(returnTree(y));
             }
             return tempNode;
@@ -30,8 +29,8 @@ class JTreeDemoFrame extends JFrame implements TreeSelectionListener {
     JTreeDemoFrame() {
         super("JTree Demo!");
 
-        DefaultMutableTreeNode root = new DefaultMutableTreeNode("E:\\");
-        File f = new File("E:\\");
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode("E:\\Study Material");
+        File f = new File("E:\\Study Material");
 
         root.add(returnTree(f));
 
